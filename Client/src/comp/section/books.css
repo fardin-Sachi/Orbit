@@ -1,0 +1,223 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    
+
+}
+
+.book{
+    padding: 30px 40px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 300;
+    color:#010f1c;
+}
+
+.book p{
+    margin-top: 10px;
+    color:#9a9a9a;
+
+
+}
+
+.book .container{
+    margin-top: 20px;
+    max-width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.book .container .filter{
+    padding: 20px 30px;
+}
+.book .container .filter .categories ul{
+    margin-top: 10px;
+}
+
+.book .container .filter .categories ul li{
+   list-style: none;
+   margin-top: 20px;
+   color:#010f1c;
+   cursor: pointer;
+}
+
+.book .container .filter .categories ul li:hover{
+    background:#0989ff ;
+}
+
+.book .container .booksbox{
+    margin-right:25% ;
+}
+.book .container .booksbox .contant{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.book .container .booksbox .contant .box{
+    padding: 10px 20px;
+    overflow: hidden;
+    width: 280px;
+    height: 380px;
+    border: 1px solid #e2e0e0;
+    margin-bottom: 20px;
+    transition: 0.5s;
+    border-radius: 5px;
+    cursor:pointer;
+    margin-right: 5px;
+}
+
+.book .container .booksbox .contant .box .img_box{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #e2e0e0;
+}
+.book .container .booksbox .contant .box .img_box img{
+    width: 300px;
+    height: 250px;
+    margin-right: 50px;
+}
+
+.book .container .booksbox .contant .box .img_box .icon{
+    z-index: 1;
+    position: relative;
+    right: -100px;
+    transition: 0.5s;
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+.book .container .booksbox .contant .box:hover .img_box .icon{
+    transform: translateX(-100px);
+}
+
+.book .container .booksbox .contant .box .img_box .icon li{
+    list-style: none;
+    padding: 10px 10px;
+    color:#010f1c;
+    cursor: pointer;
+    box-shadow: rgba(0,0,0,0.35)0px 3px 8px;
+    background: #fff;
+    transition: 0.5s;
+    font-size: 18px;
+}
+
+.book .container .booksbox .contant .box .img_box .icon li:hover{
+    background:#0989ff ;
+    color:#010f1c;
+}
+
+.book .container .booksbox .contant .box .detail{
+    margin-top: 10px;
+}
+
+.book .container .booksbox .contant .box .detail h3{
+    font-size: 26px;
+    margin-top: 5px;
+    color:#010f1c;
+    transition: 0.5s;
+}
+
+.book .container .booksbox .contant .box:hover .detail h3{
+    color: #0989ff;
+}
+
+
+.book_detail{
+    margin-top: 30px;
+    padding: 30px 40px;
+    width: 100%;
+    height: 120%;
+    position: fixed;
+    z-index: 1;
+    margin-top: -20%;
+    background: rgba(0,0,0,0.24);
+
+}
+
+.book_detail .container{
+    margin-top: 7%;
+    margin-left: 8%;
+    width: 1000px;
+    height: 550px;
+    background: #fff;
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow:  rgba(0,0,0,0.24)0px 3px 8px;
+
+}
+.book_detail .container .closebtn{
+    margin-left: 100%;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 22px;
+    cursor: pointer;
+
+}
+
+.book_detail .container .bookbox{
+    max-width: 100%;
+    display: flex;
+    padding: 20px 30px;
+    margin-top: 20px;
+    justify-content: space-between;
+
+}
+
+.book_detail .container .bookbox .img_box{
+    padding: 20px 30px;
+    width:310px;
+    height: 400px;
+    background: #f1f1f1;
+}
+
+.book_detail .container .bookbox .img_box img{
+    height:350px;
+    width: 250px;
+}
+.book_detail .container .bookbox .detail{
+    margin-left: 30px;
+    margin-top: 10px;
+}
+
+.book_detail .container .bookbox .detail h4{
+    text-decoration: uppercase;
+    font-size: 14px;
+    font-family: 200;
+    color:#9a9a9a;
+    letter-spacing: 1px;
+
+}
+
+.book_detail .container .bookbox .detail h2{
+    margin-top: 20px;
+    font-size: 32px;
+    color:#010f1c;
+text-transform: capitalize;
+letter-spacing: 1px;
+}
+
+.book_detail .container .bookbox .detail h3{
+    margin-top: 10x;
+    color:#4a4a4a;
+    font-size: 32px;
+    letter-spacing: 1px;
+}
+.book_detail .container .bookbox .detail button{
+    margin-top: 30px;
+    padding: 20px 20px;
+    font-size: 16px;
+    color: #fff;
+    background: #010f1c;
+    transition: 0.5s;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.book_detail .container .bookbox .detail button:hover{
+    background: #0989ff;
+}

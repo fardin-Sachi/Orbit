@@ -1,0 +1,58 @@
+import React from 'react';
+import { useEffect, useState } from "react";
+import Navbar from './comp/section/Navbar';
+import Rout from '../src/comp/section/Rout'
+import { BrowserRouter } from 'react-router-dom';
+import Footer from '../src/comp/section/footer'
+import booksdetail from '../src/comp/section/booksdetails';
+
+
+
+const App = () => {
+
+  const [close,setClose]=useState(false)
+
+
+  const [title, setTitle] = useState("Orbit");
+
+  //product detail
+  const[detail,setDetail]=useState([])
+
+  //filter product
+  const[book,setBook]=useState(booksdetail)
+  const searchbtn=(book)=>{
+      const change= booksdetail.filter((x)=>{
+        return x.genre===book
+      })
+
+      setBook(change)
+  }
+
+  useEffect(() => {
+    document.title = title;
+  }, [title]);
+
+  const changeTitle = (event) => {
+    setTitle(event.target.value);
+  };
+
+  //product detail
+  const view=(book)=>{
+      setDetail([{... book}])
+      setClose(true)
+  }
+
+  return (
+    <>
+    <BrowserRouter>
+       <Navbar searchbtn={searchbtn}/>
+       <Rout book={book} setBook={setBook} detail={detail} view={view} close={close} setClose={setClose}/>
+       <Footer/>
+    </BrowserRouter>
+       
+    </>
+  
+  )
+}
+
+export default App

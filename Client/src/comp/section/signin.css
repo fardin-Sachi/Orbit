@@ -1,0 +1,150 @@
+*{
+    margin:0;
+    padding:0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+/* Assuming these are the parent elements containing the mentioned classes */
+.login_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    text-align: center;
+  }
+  .signin_container.right_section h1{
+        text-align: center;
+  }
+  .card_container {
+ 
+    width: 50%;
+    overflow: hidden;
+    box-shadow: 0px 0px 15px -5px rgba(0, 0, 0, 0.75); 
+    display: flex; /* Change to flex */
+    flex-direction: row; /* Align left and right sections side by side */
+    justify-content: space-between; /* Add space between card containers */
+    align-items: stretch; /* Align items to stretch vertically */
+    background-color: #FCD19C;
+    color: black;
+
+  }
+  
+  /* Image styles */
+  .jack-sparrow {
+    height: 50px;
+    width: 50px;
+    object-fit: cover;
+  }
+  
+  /* Login form input styles */
+  .right_section input {
+    width: 80%;
+    margin-left: 50px;
+    display: block; /* Make the input take full width */
+    padding: 10px; /* Adjust padding as needed */
+    margin-bottom: 10px; /* Add some spacing between inputs */
+    background-color: #333; /* Change the input background color */
+    color: white; /* Change the input text color */
+    border: none;
+    border-radius: 5px;
+  
+
+  }
+  
+  /* Login button styles */
+  .signin_btn {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 42%;
+    transition: background-color 0.3s ease;
+    margin-bottom: 10px;
+
+/* Center horizontally */
+    display: block; /* Display as block element to center horizontally */
+    
+
+  }
+  
+  /* Social media logos styles */
+
+  .google_logo {
+    height: 40px;
+    width: 40px;
+    
+    object-fit: contain; /* Adjust object-fit to contain */
+    margin-top: 10px;
+ 
+    /* Ensure the logos are displayed as block elements */
+    display: inline-flex;
+  }
+  .facebook_logo{
+    height: 40px;
+    width: 40px;
+    margin-left:5px ;
+    object-fit: contain; /* Adjust object-fit to contain */
+    margin-top: 10px;
+    /* Ensure the logos are displayed as block elements */
+    display: inline-flex;
+  }
+  
+  /* Link button styles */
+  .link_btn {
+    margin-top: 10px;
+    color: #333;
+    text-decoration: none;
+    margin: 0 auto; /* Center horizontally */
+    display: block; /* Display as block element to center horizontally */
+    text-align: center; /* Center the text inside the block */
+}
+  
+  /* Logo text styles */
+  .text_logo {
+    color: white;
+    margin-top: 10px;
+  }
+  
+  /* Left section styling */
+  .left_section {
+    flex: 40; /* 40% of available space */
+    background-color: #f0f0f0;
+    display: flex; /* Use flexbox for proper alignment */
+    flex-direction: column; /* Align items vertically */
+    justify-content: space-between; /* Push items to the top and bottom */
+    position: relative;
+    padding: 20px;
+  }
+  
+  
+  /* Upper and lower parts in the left section */
+  .upper_part {
+    flex: 60; /* 60% of left section */
+    padding: 10px; /* Adjust padding as needed */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content vertically */
+    justify-content: center; /* Center content horizontally */
+  }
+  
+  
+  /* Right section styling */
+  .right_section {
+    flex: 60; /* 60% of available space */
+    height: 100%; /* 60% of available space */
+    padding: 20px;
+    background-color: black(34, 190, 104, 0.938);
+    border-left: 1px solid #ccc;
+    color: white; /* Text color for readability */
+    align-items: center;
+  }
+  
+  .login_book{
+    height: 100%; /* Take up the full height of the upper part */
+    object-fit: cover;
+    max-width: 100%; /* Take up the full width of the upper part */
+  }
+  
