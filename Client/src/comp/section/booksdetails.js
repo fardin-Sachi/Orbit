@@ -4,7 +4,7 @@ const booksdetail=[
         id : 1,
         Title: 'Book name',
         Poet: 'poet name',
-        price: 'tk',
+        price: '200',
         genre: 'romantic',
         Img: aginibina
      },
@@ -13,7 +13,7 @@ const booksdetail=[
          id : 2,
          Title: 'Book name',
          Poet: 'poet name',
-         price: 'tk',
+         price: '200',
          genre: 'romantic',
          Img: aginibina
       },
@@ -22,7 +22,7 @@ const booksdetail=[
          id : 3,
          Title: 'Book name',
          Poet: 'poet name',
-         price: 'tk',
+         price: '200',
          genre: 'drama',
          Img:aginibina
       },
@@ -31,7 +31,7 @@ const booksdetail=[
          id : 4,
          Title: 'Book name',
          Poet: 'poet name',
-         price: 'tk',
+         price: '200',
          genre: 'drama',
          Img: aginibina
       },
@@ -40,7 +40,7 @@ const booksdetail=[
          id : 5,
          Title: 'Book name',
          Poet: 'poet name',
-         price: 'tk',
+         price: '200',
          genre: 'drama',
          Img: aginibina
       },
@@ -48,7 +48,7 @@ const booksdetail=[
        id : 6,
        Title: 'Book name',
        Poet: 'poet name',
-       price: 'tk',
+       price: '200',
        genre: 'drama',
        Img: aginibina
     },
@@ -56,7 +56,7 @@ const booksdetail=[
        id : 7,
        Title: 'Book name',
        Poet: 'poet name',
-       price: 'tk',
+       price: '200',
        genre: 'comedy',
        Img: aginibina
     },
@@ -64,7 +64,7 @@ const booksdetail=[
        id : 8,
        Title: 'Book name',
        Poet: 'poet name',
-       price: 'tk',
+       price: '200',
        genre: 'science_fiction',
        Img: aginibina
     },
@@ -72,7 +72,7 @@ const booksdetail=[
        id : 9,
        Title: 'Book name',
        Poet: 'poet name',
-       price: 'tk',
+       price: '200',
        genre: 'detective',
        Img: aginibina
     },
@@ -80,7 +80,7 @@ const booksdetail=[
        id : 9,
        Title: 'Book name',
        Poet: 'poet name',
-       price: 'tk',
+       price: '200',
        genre: 'detective',
        Img: aginibina
     },
@@ -88,7 +88,7 @@ const booksdetail=[
        id : 10,
        Title: 'Book name',
        Poet: 'poet name',
-       price: 'tk',
+       price: '200',
        genre: 'detective',
        Img: aginibina
     },
@@ -96,7 +96,7 @@ const booksdetail=[
        id : 12,
        Title: 'Book name',
        Poet: 'poet name',
-       price: 'tk',
+       price: '200',
        genre: 'tragedy',
        Img: aginibina
     }

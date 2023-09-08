@@ -34,7 +34,7 @@ const Navbar = ({searchbtn}) => {
           <div className='icon'>
             <div className='account'>
             <div className='user_icon'>
-              <AiOutlineUser/>
+             <Link to='/profile'><AiOutlineUser/></Link> 
             </div>
               <p>Hello,user</p>
             </div>

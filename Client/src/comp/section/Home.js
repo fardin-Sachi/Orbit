@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import {AiOutlineClose} from 'react-icons/ai'
 
 import { AiOutlineHeart} from 'react-icons/ai';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
@@ -18,10 +19,39 @@ import harvest from '../image/The_Last_Harvest_Paintings_of_Rabindranath_Tagore_
 import './Home.css'
 
 
-const Home = () => {
+const Home = ({detail,view,close,setClose,addtocart}) => {
  
   return (
-    <>
+    <>{
+      close?
+      <div className='book_detail'>
+      <div className='container'>
+          <button onClick={() => setClose(false)} className='closebtn'><AiOutlineClose/></button>
+          {
+              detail.map((curElm)=>{
+                  return(
+                      <di className='bookbox'>
+                          <div className='img_box'>
+                              <img src={curElm.Img} alt={curElm.Title}></img>
+                          </div>
+                          <div className='detail'>
+                              <h2>{curElm.Title}</h2>
+                              <h4>{curElm.Poet}</h4>
+                              <h3>{curElm.price}</h3>
+                              <button>Add to Cart</button>
+                          </div>
+                      </di>
+                  )
+              })
+          }
+         
+      </div>
+ </div>:null
+      }
+         
+
+
+
        <div className='top_banner'>
       <div className='container'>
         <div className='detail'>
@@ -103,8 +133,8 @@ const Home = () => {
         <div className='img_box'>
   <img src={curElm.Img} alt={curElm.Title} />
           <div className='icon'>
-            <li><AiOutlineShoppingCart/></li>
-            <li> <BsEye/></li>
+            <li onClick={()=>addtocart(curElm)}><AiOutlineShoppingCart/></li>
+            <li onClick={()=>view(curElm)}> <BsEye/></li>
             <li><AiOutlineHeart/></li>
             </div>
         </div>
@@ -112,7 +142,7 @@ const Home = () => {
         <div className='detail'>
             <h3>{curElm.Title}</h3>  
             <h4>{curElm.Poet}</h4>
-            <h4>{curElm.price}</h4>
+            <h4>{curElm.price}tk</h4>
         </div>
         
       </div>

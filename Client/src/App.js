@@ -1,4 +1,5 @@
 import React from 'react';
+import { Container, Row, Col } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import Navbar from './comp/section/Navbar';
 import Rout from '../src/comp/section/Rout'
@@ -9,6 +10,10 @@ import booksdetail from '../src/comp/section/booksdetails';
 
 
 const App = () => {
+
+
+//add to cart
+  const [cart,setCart]=useState([])
 
   const [close,setClose]=useState(false)
 
@@ -42,11 +47,35 @@ const App = () => {
       setClose(true)
   }
 
+  //add to cart
+
+
+  const addtocart = (book)=>
+  {
+
+    const exist=cart.find((x)=>{
+      x.id===book.id
+    })
+    if(exist){
+      alert('This Book is already added to cart')
+    }
+    else{
+      setCart([...cart,{...book,qty:1}])
+      alert("Book is added to the cart")
+    }
+  }
+  console.log(cart)
+
+
+
+
+  
+
   return (
     <>
     <BrowserRouter>
        <Navbar searchbtn={searchbtn}/>
-       <Rout book={book} setBook={setBook} detail={detail} view={view} close={close} setClose={setClose}/>
+       <Rout book={book} setBook={setBook} detail={detail} view={view} close={close} setClose={setClose} cart={cart} setCart={setCart} addtocart={addtocart}/>
        <Footer/>
     </BrowserRouter>
        
