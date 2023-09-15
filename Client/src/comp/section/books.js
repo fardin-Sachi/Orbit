@@ -1,27 +1,25 @@
 import React from 'react'
-import Booksdetail from './booksdetails'
+import aginibina from '../image/nazrul.jpg'
+import booksdetail from './booksdetails'
 import './books.css'
-
 import { AiOutlineHeart } from 'react-icons/ai';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { BsEye } from 'react-icons/bs';
-import { BsArrowRight } from 'react-icons/bs';
-import booksdetail from './booksdetails';
+// import { BsArrowRight } from 'react-icons/bs';
 import {AiOutlineClose} from 'react-icons/ai'
 
 const Books = ({book,setBook,detail,view,close,setClose,addtocart}) => {
     
-
     const filterbook = (genre) => {
         if (genre === 'All Books') {
-            setBook(Booksdetail);
+            setBook(booksdetail);
         } else {
-            const filteredBooks = Booksdetail.filter((book) => book.genre === genre);
+            const filteredBooks = booksdetail.filter((book) => book.genre === genre);
             setBook(filteredBooks);
         }
     };
     const AllBooks=()=>{
-        setBook(Booksdetail)
+        setBook(booksdetail)
     }
     return (
         <>
@@ -33,17 +31,18 @@ const Books = ({book,setBook,detail,view,close,setClose,addtocart}) => {
             {
                 detail.map((curElm)=>{
                     return(
-                        <di className='bookbox'>
+                        <div className='bookbox'>
                             <div className='img_box'>
-                                <img src={curElm.Img} alt={curElm.Title}></img>
+                                <img src={aginibina} alt={curElm.Title}></img>
                             </div>
                             <div className='detail'>
-                                <h2>{curElm.Title}</h2>
-                                <h4>{curElm.Poet}</h4>
-                                <h3>{curElm.price}</h3>
+                                <h1>{curElm.title}</h1>
+                                <h4>{curElm.author}</h4>
+                                <h3>{curElm.genre}</h3>
+                                <h3>{curElm.price}/-</h3>
                                 <button>Add to Cart</button>
                             </div>
-                        </di>
+                        </div>
                     )
                 })
             }
@@ -51,10 +50,6 @@ const Books = ({book,setBook,detail,view,close,setClose,addtocart}) => {
         </div>
    </div>:null
         }
-           
-
-
-
             <div className='book'>
             <h3>Books</h3>
             <p>Home . books</p>
@@ -66,15 +61,17 @@ const Books = ({book,setBook,detail,view,close,setClose,addtocart}) => {
                                 <li onClick={()=> AllBooks()}>All Books</li>
                                 <li onClick={()=> filterbook('romantic')}>Romantic</li>
                                 <li onClick={()=> filterbook('drama')}>Drama</li>
-                                <li onClick={()=> filterbook('comedy')}>Comedy</li>
-                                <li onClick={()=> filterbook('science_fiction')}>Science fiction</li>
-                                <li onClick={()=> filterbook('detective')}>Detective</li>
-                                <li onClick={()=> filterbook('tragedy')}>Tragedy</li>
+                                <li onClick={()=> filterbook('Poetry')}>Poetry</li>
+                                <li onClick={()=> filterbook('science_Fiction')}>Science Fiction</li>
+                                <li onClick={()=> filterbook('Historical_Fiction')}>Historical Fiction</li>
+                                <li onClick={()=> filterbook('Detective')}>Detective</li>
+                                <li onClick={()=> filterbook('Tragedy')}>Tragedy</li>
+                                <li onClick={()=> filterbook('Short_Story')}>Short Story</li>
                             </ul>
                         </div>
 
                     </div>
-                    <div className='booksbox'>
+                    <div className='booksContainer'>
                         <div className='contant'>
                             {
                                 book.map((curElm) => {
@@ -82,7 +79,7 @@ const Books = ({book,setBook,detail,view,close,setClose,addtocart}) => {
                                         <>
                                             <div className='box' key={curElm.id}>
                                                 <div className='img_box'>
-                                                    <img src={curElm.Img} alt={curElm.Title} />
+                                                    <img src={aginibina} alt={curElm.title} />
                                                     <div className='icon'>
                                                         <li onClick={()=>addtocart(curElm)}><AiOutlineShoppingCart /></li>
                                                         <li onClick={()=>view(curElm)}> <BsEye /></li>
@@ -91,11 +88,11 @@ const Books = ({book,setBook,detail,view,close,setClose,addtocart}) => {
                                                 </div>
 
                                                 <div className='detail'>
-                                                    <h3>{curElm.Title}</h3>
-                                                    <h4>{curElm.Poet}</h4>
-                                                    <h4>{curElm.price}tk</h4>
+                                                    <h4>{curElm.title}</h4>
+                                                    <h5>{curElm.author}</h5>
+                                                    <h5>Genre: {curElm.genre}</h5>
+                                                    <p>Price: {curElm.price}/-</p>
                                                 </div>
-
                                             </div>
                                         </>
                                     )
@@ -112,3 +109,25 @@ const Books = ({book,setBook,detail,view,close,setClose,addtocart}) => {
 }
 
 export default Books
+/* 
+const [books, setBooks] = useState([])
+    const fetchBooks = async () => {
+        try {
+            setLoading(true)
+            const response = await fetch("/api/books")
+            if (response.ok) {
+                const json = await response.json()
+                setBooks(json)
+            }
+            else setError("Error fetching data")
+        } catch (err) {
+            setError("An error occured")
+        } finally {
+            setLoading(false)
+        }
+    }
+    useEffect(() => {
+        fetchBooks()
+        // fetchBookOfGenre(genre)
+    }, [])
+*/

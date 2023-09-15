@@ -1,28 +1,32 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from 'react-router-dom';
 import './login.css';
-import facebook_logo from '../image/facebook.png'
 import google_logo from '../image/search.png'
 import login_book from '../image/books-1281581_1280.jpg'
-
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 import { auth } from "./firebase";
 import {
-  createUserWithEmailAndPassword,
+  // createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  onAuthStateChanged,
-  signOut,
+  // onAuthStateChanged,
+  // signOut,
   signInWithPopup,
+  sendPasswordResetEmail,
 } from "firebase/auth";
+import { setLogLevel } from "@firebase/app";
 
 
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(null)
 
   const handleEmailPasswordLogin = async () => {
     try {
+      setLoading(true)
+      setError(null)
       const authInstance = getAuth();
 
       // Sign in with email and password
@@ -30,18 +34,25 @@ const Login = () => {
 
       // Redirect to the Home page after successful login
       navigate('/'); // Assuming that '/' is the route for the Home component
+      console.log("Successfully signed in")
     } catch (error) {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.error(errorCode, errorMessage);
+      setError("Invalid email or password. Please try again.")
+      // const errorCode = error.code;
+      // const errorMessage = error.message;
+      // console.error(errorCode, errorMessage);
+    }
+    finally {
+      setLoading(false)
     }
   };
 
   const handleGoogleLogin = async () => {
     try {
+      setLoading(true)
+      setError(null)
       const authInstance = getAuth();
       const provider = new GoogleAuthProvider();
-  
+
       // Sign in with Google using the provider
       await signInWithPopup(authInstance, provider)
         .then((result) => {
@@ -51,15 +62,32 @@ const Login = () => {
         })
         .catch((error) => {
           // Handle errors
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          console.error('Google Auth Error:', errorCode, errorMessage);
+          setError("Google login failed. Please try again.")
+          // const errorCode = error.code;
+          // const errorMessage = error.message;
+          // console.error('Google Auth Error:', errorCode, errorMessage);
         });
     } catch (error) {
       // Handle any unexpected errors
-      console.error('Error:', error);
+      setError("An unexpected error occurred. Please try again.")
+      // console.error('Error:', error);
+    }
+    finally {
+      setLoading(false)
     }
   };
+  const resetPassword = async (email) => {
+    try {
+      await sendPasswordResetEmail(auth, email);
+      setLoading(true)
+      alert("Password reset link sent!");
+    } catch (err) {
+      console.error(err);
+      alert(err.message);
+    } finally {
+      setLoading(false)
+    }
+  }
 
   return (
     <div className="login_container">
@@ -86,10 +114,14 @@ const Login = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <button className='login_btn' type='button' onClick={handleEmailPasswordLogin}>
-              Log In
+            <button className='login_btn' type='button' onClick={handleEmailPasswordLogin} disabled={loading}>
+              {loading ? 'Logging in...' : 'Log In'}
             </button>
-          </form>
+            {error && <p className="error-message">{error}</p>}
+       </form>
+       <Link  className='link_btn' onClick={resetPassword}><p>forget passoword</p></Link>
+          
+          
           <Link to='/signup' className='link_btn' >Don't have an account? Sign up.</Link>
 
           <div className='logo_container'>
@@ -103,8 +135,7 @@ const Login = () => {
                 transition: "opacity 0.3s ease-in-out",
               }}
             />
-            <img className='facebook_logo' src={facebook_logo} alt="Facebook Logo" />
-            <p className='text_logo'>Sign in with Google or Facebook account</p>
+            <p className='text_logo'>Sign in with Google account</p>
           </div>
         </div>
       </div>

@@ -12,13 +12,15 @@ const Signup = () => {
 
   const handleSignup = async (e) => {
     e.preventDefault();
-  
     try {
       const authInstance = getAuth();
-      const userCredential = await createUserWithEmailAndPassword(authInstance, email, password);
-      const user = userCredential.user;
+      const userCredential = await createUserWithEmailAndPassword(authInstance, email, password)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          console.log("User created:", user); 
+        })
 
-      console.log("User created:", user);
+      // console.log("User created:", user);
       
       // Redirect to the Home page
       navigate('/'); // Assuming that '/' is the route for the Home component

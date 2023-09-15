@@ -6,12 +6,33 @@ import { BsBagCheck } from 'react-icons/bs';
 import { CiLogin } from 'react-icons/ci';
 import { CiLogout } from 'react-icons/ci';
 import logo from '../image/orbit logo.png'
-
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Navbar.css';
+import { getAuth } from '@firebase/auth';
+import { signOut } from '@firebase/auth';
 
 const Navbar = ({searchbtn}) => {
   const[search,setSearch]=useState()
+  const [loading,setLoading] = useState(false)
+  const [error,setError] = useState(null)
+  let auth = getAuth()
+  let user = auth.currentUser
+  const navigate = useNavigate()
+  const logout = async () => {
+    try{
+      setLoading(true);
+      setError(null);
+      await signOut(auth);
+      console.log("Successfully signed out!")
+      navigate('/')
+    }catch(err){
+      // console.error(err+"4")
+      // alert(err.message)
+      setError("Unable to logout, please try again!")
+    } finally{
+      setLoading(false)
+    }
+  };
   return (
     <>
        <div className='free'>
@@ -34,17 +55,16 @@ const Navbar = ({searchbtn}) => {
           <div className='icon'>
             <div className='account'>
             <div className='user_icon'>
-             <Link to='/profile'><AiOutlineUser/></Link> 
+              {user!==null? <Link to='/profile'><AiOutlineUser/></Link> : <p></p>}
             </div>
-              <p>Hello,user</p>
+              {user!==null? <p>Hello, {user.email}</p> : <p></p>}
+              {/* user.providerData.forEach((profile) => {profile.email}   */}
+              {/* <p>Hello,user</p> */}
             </div>
             <div className='second_icon'>
-              <Link to='/' className='link'><AiOutlineHeart/></Link>
-              <Link to='/cart' className='link'><BsBagCheck/></Link>
-           
+              {user!==null? <Link to='/cart' className='link'><BsBagCheck/></Link> : <p></p>}
+              {user!==null? <Link to='/' className='link'><AiOutlineHeart/></Link> : <p></p>}
             </div>
-            
-
 
           </div>
         </div>
@@ -58,32 +78,42 @@ const Navbar = ({searchbtn}) => {
               <Link to='/' className='link'>Home</Link>
             </li>
             <li>
-              <Link to='/books' className='link'>Books</Link>
+              {
+                user!==null?
+                <Link to='/books' className='link'>Books</Link>
+                :
+                <Link to='/login' className='link'>Books</Link>
+              }
             </li>
             <li>
-              <Link to='/about' className='link'>About</Link>
+              {
+                user!==null?
+                <Link to='/about' className='link'>About</Link>
+                :
+                <Link to='/login' className='link'>About</Link>
+              }
             </li>
             <li>
-              <Link to='/contact' className='link'>Contact</Link>
+              {
+                user!==null?
+                <Link to='/contact' className='link'>Contact</Link>
+                :
+                <Link to='/login' className='link'>Contacts</Link>
+              }
+              
             </li>
           </ul>
           </div>
 
-
-
-
           {/* login + logout button */}
-          <div className='auth'>
-           <Link to='/login'><button><CiLogin/></button></Link> 
-           <Link to='/'><button><CiLogout/></button></Link>
-          
-            
+          <div className='auth'> 
+            {user!==null? <Link to='/'><button onClick={logout} disabled={loading}>{loading? 'Logging out' : <CiLogout/>}</button></Link> : <Link to='/login'><button><CiLogin/></button></Link>}            
           </div>
         </div>
       </div>
     
     </>
-       );
+  );
 };
 
 export default Navbar;
