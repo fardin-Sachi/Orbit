@@ -21,7 +21,7 @@ const Signup = () => {
       console.log("User created:", user);
       
       // Redirect to the Home page
-      navigate('/'); // Assuming that '/' is the route for the Home component
+      navigate('/user'); // Assuming that '/' is the route for the Home component
     } catch (error) {
       const errorCode = error.code;
       const errorMessage = error.message;
@@ -62,7 +62,7 @@ const Signup = () => {
               Sign Up
             </button>
           </form>
-          <Link to='/login' className='link_btn' >Have an account? Log in.</Link>
+          <Link to='/user/login' className='link_btn' >Have an account? Log in.</Link>
         </div>
       </div>
     </div>

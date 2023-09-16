@@ -19,5 +19,14 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-export { auth, GoogleAuthProvider };
+const logout = async () => {
+    try{
+      signOut(auth);
+    }catch(err){
+      console.error(err+"4")
+      alert(err.message)
+    }
+  };
+
+export { auth, GoogleAuthProvider, logout};
 export default app;

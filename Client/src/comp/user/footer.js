@@ -5,9 +5,12 @@ import {RiYoutubeFill} from 'react-icons/ri'
 import {RiTwitterFill} from 'react-icons/ri'
 import logo from '../image/orbit logo.png'
 import './footer.css'
+import { Link } from 'react-router-dom'
 
 
-const Footer = () => {
+
+const Footer = ({ toggleAdminView,isAdmin }) => {
+
   return (
     <>
        <div className='footer'>
@@ -45,6 +48,15 @@ const Footer = () => {
                     <li>About</li>
                     <li>Contact</li>
                     <li>Terms and Condition</li>
+                    <li>
+                    {isAdmin ? (
+  <span onClick={toggleAdminView}>User Mode</span>
+) : (
+  <Link to="/my_admin" onClick={toggleAdminView}>Admin Panel</Link>
+)}
+
+          </li>
+ 
 
                 </ul>
             </div>

@@ -19,7 +19,7 @@ import harvest from '../image/The_Last_Harvest_Paintings_of_Rabindranath_Tagore_
 import './Home.css'
 
 
-const Home = ({detail,view,close,setClose,addtocart}) => {
+const Home = ({detail,view,close,setClose,addtocart,addtowish}) => {
  
   return (
     <>{
@@ -135,7 +135,7 @@ const Home = ({detail,view,close,setClose,addtocart}) => {
           <div className='icon'>
             <li onClick={()=>addtocart(curElm)}><AiOutlineShoppingCart/></li>
             <li onClick={()=>view(curElm)}> <BsEye/></li>
-            <li><AiOutlineHeart/></li>
+            <li onClick={()=>addtowish(curElm)}><AiOutlineHeart/></li>
             </div>
         </div>
 

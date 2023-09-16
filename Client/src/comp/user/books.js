@@ -9,7 +9,7 @@ import { BsArrowRight } from 'react-icons/bs';
 import booksdetail from './booksdetails';
 import {AiOutlineClose} from 'react-icons/ai'
 
-const Books = ({book,setBook,detail,view,close,setClose,addtocart}) => {
+const Books = ({book,setBook,detail,view,close,setClose,addtocart,addtowish}) => {
     
 
     const filterbook = (genre) => {
@@ -86,7 +86,7 @@ const Books = ({book,setBook,detail,view,close,setClose,addtocart}) => {
                                                     <div className='icon'>
                                                         <li onClick={()=>addtocart(curElm)}><AiOutlineShoppingCart /></li>
                                                         <li onClick={()=>view(curElm)}> <BsEye /></li>
-                                                        <li><AiOutlineHeart /></li>
+                                                        <li onClick={()=>addtowish(curElm)}><AiOutlineHeart /></li>
                                                     </div>
                                                 </div>
 

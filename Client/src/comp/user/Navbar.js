@@ -9,6 +9,7 @@ import logo from '../image/orbit logo.png'
 
 import { Link } from 'react-router-dom';
 import './Navbar.css';
+import { Auth, logout } from 'firebase/auth';
 
 const Navbar = ({searchbtn}) => {
   const[search,setSearch]=useState()
@@ -34,13 +35,13 @@ const Navbar = ({searchbtn}) => {
           <div className='icon'>
             <div className='account'>
             <div className='user_icon'>
-             <Link to='/profile'><AiOutlineUser/></Link> 
+             <Link to='user/profile'><AiOutlineUser/></Link> 
             </div>
               <p>Hello,user</p>
             </div>
             <div className='second_icon'>
-              <Link to='/' className='link'><AiOutlineHeart/></Link>
-              <Link to='/cart' className='link'><BsBagCheck/></Link>
+              <Link to='user/wish' className='link'><AiOutlineHeart/></Link>
+              <Link to='user/cart' className='link'><BsBagCheck/></Link>
            
             </div>
             
@@ -55,16 +56,16 @@ const Navbar = ({searchbtn}) => {
           <div className='nav'>
           <ul>
             <li>
-              <Link to='/' className='link'>Home</Link>
+              <Link to='/user' className='link'>Home</Link>
             </li>
             <li>
-              <Link to='/books' className='link'>Books</Link>
+              <Link to='/user/books' className='link'>Books</Link>
             </li>
             <li>
-              <Link to='/about' className='link'>About</Link>
+              <Link to='/user/about' className='link'>About</Link>
             </li>
             <li>
-              <Link to='/contact' className='link'>Contact</Link>
+              <Link to='/user/contact' className='link'>Contact</Link>
             </li>
           </ul>
           </div>
@@ -72,12 +73,12 @@ const Navbar = ({searchbtn}) => {
 
 
 
+
           {/* login + logout button */}
           <div className='auth'>
-           <Link to='/login'><button><CiLogin/></button></Link> 
-           <Link to='/'><button><CiLogout/></button></Link>
-          
-            
+           <Link to='/user/login'><button><CiLogin/></button></Link> 
+           <Link to='/user'><button><CiLogout/></button></Link>
+
           </div>
         </div>
       </div>

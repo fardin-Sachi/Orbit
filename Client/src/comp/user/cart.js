@@ -35,7 +35,7 @@ const Totalprice = cart.reduce((price,item) => price+item.qty*item.price,0)
             {cart.length===0 && 
              <div className='emptycart'>
                 <h2 className='empty'>Cart is Empty</h2>
-                <Link to='/books' className='emptycartbtn'>Buy Now</Link>
+                <Link to='user/books' className='emptycartbtn'>Buy Now</Link>
              </div> }
         <div className='contant'>
             {

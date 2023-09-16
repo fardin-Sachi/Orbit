@@ -47,7 +47,7 @@ const Login = () => {
         .then((result) => {
           // Handle successful login if needed
           console.log('Google login success:', result.user);
-          navigate('/'); // Redirect to the Home page after successful login
+          navigate('/user'); // Redirect to the Home page after successful login
         })
         .catch((error) => {
           // Handle errors
@@ -90,7 +90,7 @@ const Login = () => {
               Log In
             </button>
           </form>
-          <Link to='/signup' className='link_btn' >Don't have an account? Sign up.</Link>
+          <Link to='/user/signup' className='link_btn' >Don't have an account? Sign up.</Link>
 
           <div className='logo_container'>
             <img
