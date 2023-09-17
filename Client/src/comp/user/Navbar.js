@@ -8,9 +8,9 @@ import { CiLogout } from 'react-icons/ci';
 import logo from '../image/orbit logo.png'
 import { Link, useNavigate } from 'react-router-dom';
 import './Navbar.css';
-import { getAuth } from '@firebase/auth';
-import { signOut } from '@firebase/auth';
-import { Auth, logout } from 'firebase/auth';
+import { getAuth, signOut } from '@firebase/auth';
+import {  } from '@firebase/auth';
+// import { Auth, logout } from 'firebase/auth';
 
 const Navbar = ({searchbtn}) => {
   const[search,setSearch]=useState()
@@ -25,7 +25,7 @@ const Navbar = ({searchbtn}) => {
       setError(null);
       await signOut(auth);
       console.log("Successfully signed out!")
-      navigate('/')
+      navigate('/home')
     }catch(err){
       // console.error(err+"4")
       // alert(err.message)

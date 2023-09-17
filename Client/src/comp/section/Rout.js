@@ -14,15 +14,16 @@ const Rout = ({book,setBook,detail,view,close,setClose,cart,setCart,addtocart}) 
   return (
     <>
         <Routes>
-            <Route path='/' element={<Home detail={detail} view={view} close={close} setClose={setClose} addtocart={addtocart} />}></Route>
+         
+            <Route path='/user/home' element={<Home detail={detail} view={view} close={close} setClose={setClose} addtocart={addtocart} />}></Route>
             
-            <Route path='/books' element={<Books book={book} setBook={setBook} detail={detail} view={view} close={close} setClose={setClose} addtocart={addtocart}/>}></Route>
+            <Route path='/user/books' element={<Books book={book} setBook={setBook} detail={detail} view={view} close={close} setClose={setClose} addtocart={addtocart}/>}></Route>
             
-            <Route path='/cart' element={<Cart cart={cart} setCart={setCart}/>}></Route>
+            <Route path='/user/cart' element={<Cart cart={cart} setCart={setCart}/>}></Route>
             
-            <Route path='/login' element={<Login/>}></Route>
+            <Route path='/user/login' element={<Login/>}></Route>
             
-            <Route path='/signup' element={<Signup/>}></Route>
+            <Route path='/user/signup' element={<Signup/>}></Route>
         </Routes>
     </>
   )
