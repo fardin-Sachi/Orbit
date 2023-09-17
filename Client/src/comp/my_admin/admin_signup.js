@@ -1,26 +1,24 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from 'react-router-dom';
-import './login.css';
+import './admin_signin.css';
 import login_book from '../image/books-1281581_1280.jpg';
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth"; // Import createUserWithEmailAndPassword
 import { auth } from "./firebase";
 
-const Signup = () => {
+const Admin_signup= () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSignup = async (e) => {
     e.preventDefault();
+  
     try {
       const authInstance = getAuth();
-      const userCredential = await createUserWithEmailAndPassword(authInstance, email, password)
-        .then((userCredential) => {
-          const user = userCredential.user;
-          console.log("User created:", user); 
-        })
+      const userCredential = await createUserWithEmailAndPassword(authInstance, email, password);
+      const user = userCredential.user;
 
-      // console.log("User created:", user);
+      console.log("User created:", user);
       
       // Redirect to the Home page
       navigate('/'); // Assuming that '/' is the route for the Home component
@@ -64,11 +62,11 @@ const Signup = () => {
               Sign Up
             </button>
           </form>
-          <Link to='/login' className='link_btn' >Have an account? Log in.</Link>
+          <Link to='/my_admin' className='link_btn' >Have an account? Log in.</Link>
         </div>
       </div>
     </div>
   );
 }
 
-export default Signup;
+export default Admin_signup;

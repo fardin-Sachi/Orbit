@@ -10,6 +10,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import './Navbar.css';
 import { getAuth } from '@firebase/auth';
 import { signOut } from '@firebase/auth';
+import { Auth, logout } from 'firebase/auth';
 
 const Navbar = ({searchbtn}) => {
   const[search,setSearch]=useState()
@@ -55,15 +56,15 @@ const Navbar = ({searchbtn}) => {
           <div className='icon'>
             <div className='account'>
             <div className='user_icon'>
-              {user!==null? <Link to='/profile'><AiOutlineUser/></Link> : <p></p>}
+              {user!==null? <Link to='/user/profile'><AiOutlineUser/></Link> : <p></p>}
             </div>
               {user!==null? <p>Hello, {user.email}</p> : <p></p>}
               {/* user.providerData.forEach((profile) => {profile.email}   */}
               {/* <p>Hello,user</p> */}
             </div>
             <div className='second_icon'>
-              {user!==null? <Link to='/cart' className='link'><BsBagCheck/></Link> : <p></p>}
-              {user!==null? <Link to='/' className='link'><AiOutlineHeart/></Link> : <p></p>}
+              {user!==null? <Link to='/user/cart' className='link'><BsBagCheck/></Link> : <p></p>}
+              {user!==null? <Link to='/wish' className='link'><AiOutlineHeart/></Link> : <p></p>}
             </div>
 
           </div>
@@ -75,30 +76,30 @@ const Navbar = ({searchbtn}) => {
           <div className='nav'>
           <ul>
             <li>
-              <Link to='/' className='link'>Home</Link>
+              <Link to='/user' className='link'>Home</Link>
             </li>
             <li>
               {
                 user!==null?
-                <Link to='/books' className='link'>Books</Link>
+                <Link to='/user/books' className='link'>Books</Link>
                 :
-                <Link to='/login' className='link'>Books</Link>
+                <Link to='/user/login' className='link'>Books</Link>
               }
             </li>
             <li>
               {
                 user!==null?
-                <Link to='/about' className='link'>About</Link>
+                <Link to='/user/about' className='link'>About</Link>
                 :
-                <Link to='/login' className='link'>About</Link>
+                <Link to='/user/login' className='link'>About</Link>
               }
             </li>
             <li>
               {
                 user!==null?
-                <Link to='/contact' className='link'>Contact</Link>
+                <Link to='/user/contact' className='link'>Contact</Link>
                 :
-                <Link to='/login' className='link'>Contacts</Link>
+                <Link to='/user/login' className='link'>Contacts</Link>
               }
               
             </li>
@@ -107,7 +108,7 @@ const Navbar = ({searchbtn}) => {
 
           {/* login + logout button */}
           <div className='auth'> 
-            {user!==null? <Link to='/'><button onClick={logout} disabled={loading}>{loading? 'Logging out' : <CiLogout/>}</button></Link> : <Link to='/login'><button><CiLogin/></button></Link>}            
+            {user!==null? <Link to='/user'><button onClick={logout} disabled={loading}>{loading? 'Logging out' : <CiLogout/>}</button></Link> : <Link to='/user/login'><button><CiLogin/></button></Link>}            
           </div>
         </div>
       </div>
