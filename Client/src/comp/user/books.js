@@ -1,25 +1,34 @@
-import React from 'react'
+import React, { useState } from 'react'
 import aginibina from '../image/nazrul.jpg'
-import booksdetail from './booksdetails'
+import booksDetail from './booksdetails'
 import './books.css'
 import { AiOutlineHeart } from 'react-icons/ai';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { BsEye } from 'react-icons/bs';
 // import { BsArrowRight } from 'react-icons/bs';
 import {AiOutlineClose} from 'react-icons/ai'
+import { getAuth} from '@firebase/auth';
 
 const Books = ({book,setBook,detail,view,close,setClose,addtocart,addtowish}) => {
-    
-    const filterbook = (genre) => {
+    // const [books,setBooks] = useState([])
+    // const auth = getAuth()
+    // const user = auth.currentUser;
+
+   
+
+ const filterbook = (genre) => {
         if (genre === 'All Books') {
-            setBook(booksdetail);
+            /* user!==null? */ setBooks(booksDetail)/*  : setBooks([]) */
         } else {
-            const filteredBooks = booksdetail.filter((book) => book.genre === genre);
-            setBook(filteredBooks);
+            const filteredBooks = booksDetail.filter((book) => book.genre === genre);
+            /* user!==null?  */setBooks(filteredBooks)/*  : setBooks([]) */
+            // setBooks(filteredBooks);
         }
     };
     const AllBooks=()=>{
-        setBook(booksdetail)
+        /* user!==null?  */setBooks(booksDetail)/*  : setBooks([]) */
+        // setBooks(booksDetail)
+        console.log(book)
     }
     return (
         <>
@@ -52,7 +61,7 @@ const Books = ({book,setBook,detail,view,close,setClose,addtocart,addtowish}) =>
         }
             <div className='book'>
             <h3>Books</h3>
-            <p>Home . books</p>
+            {/* <p>Home . books</p> */}
                 <div className='container'>
                     <div className='filter'>
                         <div className='categories'>
