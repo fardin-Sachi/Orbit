@@ -14,8 +14,8 @@ const Header = ({OpenSidebar}) => {
                 
             </div>
             <div className='header-right'>
-                <BsFillBellFill className='icon'/>
-                <BsPersonCircle className='icon'/>
+                <BsFillBellFill className='icon'/> {/* Notification Buttor */}
+                <BsPersonCircle className='icon'/>{/* Profile Icon */}
             </div>
         </div>
     </>

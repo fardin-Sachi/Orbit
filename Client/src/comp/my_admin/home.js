@@ -11,11 +11,6 @@ import {AiFillFileAdd} from 'react-icons/ai'
 import {GrUpdate} from 'react-icons/gr'
 import {IoBookSharp} from 'react-icons/io5'
 
-
-
-
-
-
 function Admin_home() {
 
   const [openSidebarToggle,setOpenSidebarToggle]=useState(false)
@@ -67,7 +62,7 @@ function Admin_home() {
         </div>
       
       
-       <div className='card'>
+       {/* <div className='card'>
        <Link to='/my_admin/admin_home/updated_book_list' className='link-style'>
         <div className='card-inner'>
           <h3>UPDATE BOOK</h3>
@@ -75,7 +70,7 @@ function Admin_home() {
         </div>
         <h1>300</h1>
         </Link>
-        </div>
+        </div> */}  
 
       </div>
     </div>

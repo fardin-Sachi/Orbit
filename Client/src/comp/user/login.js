@@ -29,7 +29,7 @@ const Login = () => {
       await signInWithEmailAndPassword(authInstance, email, password);
 
       // Redirect to the Home page after successful login
-      navigate('/user/home'); // Assuming that '/' is the route for the Home component
+      navigate('/user'); // Assuming that '/' is the route for the Home component
     } catch (error) {
       setError("Invalid email or password. Please try again.")
     } finally{

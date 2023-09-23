@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {AiOutlineClose} from 'react-icons/ai'
-
 import { AiOutlineHeart} from 'react-icons/ai';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
-
 import { BsArrowRight } from 'react-icons/bs';
 import harryImage from '../image/harry_philosoper_stone.jpg';
 import nazrul from '../image/poet_pic/IslamKaziNazrul.jpg'
@@ -15,12 +13,32 @@ import bankim_chandra from '../image/poet_pic/Bankim-Chandra-Chattopadhyay.jpg'
 import Home_books from './home_books';
 import { BsEye } from 'react-icons/bs';
 import harvest from '../image/The_Last_Harvest_Paintings_of_Rabindranath_Tagore_(book).jpeg'
-
 import './Home.css'
-
+import { auth } from './firebase';
 
 const Home = ({detail,view,close,setClose,addtocart,addtowish}) => {
- 
+  const navigate = useNavigate()
+  const someBooksForHomepage = []
+  const fetchSomeBooksforHomepage = async () => {
+    try{
+      const response = await fetch('/api/admin/books')
+      if(response.ok){
+        // const data = response.json()
+        // someBooksForHomepage = data
+        someBooksForHomepage = response.json()
+        return someBooksForHomepage
+      } else throw new Error("Something's Wrong")
+    } catch(err){
+      throw new Error("Please reload")
+    }
+  }
+  const handleUserAuth = () => {
+    // Check if the user is logged in
+    if (!auth.currentUser) {
+      // User is not logged in, redirect to the /admin route
+      navigate('/user/login')
+    } 
+  }
   return (
     <>{
       close?
@@ -160,7 +178,8 @@ const Home = ({detail,view,close,setClose,addtocart,addtowish}) => {
           <h2>wrriter name</h2>
           <p>price amount</p>
           
-          <Link to='/books' className='link' >Buy now <BsArrowRight/></Link>
+          {/*  */}
+          <Link to='/books' className='link' onClick={handleUserAuth}>Buy now <BsArrowRight/></Link>
    </div>
    <div className='img_box'>
    <img src={harvest} alt='sliderimg' ></img>

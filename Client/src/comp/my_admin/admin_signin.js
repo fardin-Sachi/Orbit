@@ -5,10 +5,13 @@ import login_book from '../image/books-1281581_1280.jpg'
 import { getAuth } from "firebase/auth";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
-const Admin_signin = ({openUserMode, isAdmin }) => {
+const Admin_signin = ({ openUserMode, isAdmin }) => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false)
+  const [error,setError] = useState(null)
+
 
 
   //handle admin to user
@@ -19,18 +22,20 @@ const Admin_signin = ({openUserMode, isAdmin }) => {
 
   const handleEmailPasswordLogin = async () => {
     try {
+      setLoading(true)
+      setError(null)
       const authInstance = getAuth();
 
       // Sign in with email and password
       await signInWithEmailAndPassword(authInstance, email, password);
 
       // Redirect to the Home page after successful login
-      navigate('/'); // Assuming that '/' is the route for the Home component
+      navigate('/my_admin/admin_home'); // Assuming that '/' is the route for the Home component
     } catch (error) {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.error(errorCode, errorMessage);
+      setError("Error Logging In")
       // Handle the error and display it to the user.
+    } finally{
+      setLoading(false)
     }
   };
 
@@ -45,7 +50,7 @@ const Admin_signin = ({openUserMode, isAdmin }) => {
         </div>
 
         <div className='right_section'>
-          <h1>Log in to ORBIT</h1>
+          <h1>Log in to ORBIT Admin Panel</h1>
           <form className="login-form">
             <input
               type='email'
@@ -59,15 +64,17 @@ const Admin_signin = ({openUserMode, isAdmin }) => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <button className='login_btn' type='button' onClick={handleEmailPasswordLogin}>
-              Log In
+
+            <button className='login_btn' type='button' onClick={handleEmailPasswordLogin} disabled={loading}>
+              {loading ? 'Logging in...' : 'Log In'}
             </button>
+
           </form>
           {isAdmin ? (
             <span onClick={toggleAdminView}>User Mode</span>
           ) : (
             <Link to='/user/login' onClick={toggleAdminView}>
-              Want to user mode?
+              Want to Go to User Mode?
             </Link>
           )}
         </div>

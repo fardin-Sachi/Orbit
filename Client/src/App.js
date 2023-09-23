@@ -21,11 +21,7 @@ const App = () => {
   const toggleAdminView = () => {
     setIsAdmin((prevState) => !prevState);
   };
-
-
   
-  
-
   const [loading,setLoading] = useState(false)
   const [cart, setCart] = useState([]);
   const [wish, setWish] = useState([]);

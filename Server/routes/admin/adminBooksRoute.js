@@ -7,6 +7,11 @@ adminBooksRouter.get('/', async (req,res) => {
     const books = await bookModel.find({})
     res.status(200).json(books)
 })
+adminBooksRouter.get('/:_id', async (req,res) => {
+    const {_id} = req.params
+    const books = await bookModel.findOne({_id: _id})
+    res.status(200).json(books)
+})
 adminBooksRouter.post('/',async (req,res) => {
     const {title,author,genre,price,quantity} = req.body
     try{

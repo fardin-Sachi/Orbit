@@ -21,15 +21,16 @@ const Admin_rout = () => {
             
             <Route path='/my_admin' element={<Admin_signin/>}></Route>
             
-            <Route path='/my_admin/admin_signup' element={<Admin_signup/>}></Route>
+            {/* <Route path='/my_admin/admin_signup' element={<Admin_signup/>}></Route> */}
             
             <Route path='/my_admin/admin_home/admin_db_total_book' element={<Admin_db_total_book/>}></Route>
             
             <Route path='/my_admin/admin_home/add_book_db' element={<Add_book_db/>}></Route>
             
-            <Route path='/my_admin/admin_home/updated_book_list' element={<Updated_book_list/>}></Route>
+            {/* <Route path='/my_admin/admin_home/updated_book_list' element={<Updated_book_list/>}></Route> */}
 
-            <Route path='/my_admin/admin_home/Admin_update_book' element={<Admin_update_book/>}></Route>
+            <Route path="/my_admin/admin_home/admin_update_book/:bookId" element={<Admin_update_book/>} />
+
             
         </Routes>
     </>
