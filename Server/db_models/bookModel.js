@@ -22,9 +22,10 @@ const bookSchema = new Schema({
         type: Number,
         required: true,
     },
-    /* cover:{
-
-    } */
+    cover:{
+        type: String,
+        required: true,
+    }
 }, {timestamps: true})
 
 module.exports = mongoose.model('book',bookSchema)

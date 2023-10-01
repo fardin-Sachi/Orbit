@@ -19,9 +19,9 @@ userRouter.get('/:_id',async (req,res) => {
 })
 
 userRouter.post('/',async (req,res) => {
-    const {email,name,address,contact} = req.body //,wishlist,cart
+    const {email,name,address,contact,wishlist,cart} = req.body //,wishlist,cart
     try{
-        const users = await userModel.create({email,name,address,contact}) //,wishlist,cart
+        const users = await userModel.create({email,name,address,contact,wishlist,cart})
         res.status(200).json(users)
     } catch(err){
         res.status(400).json({error: err.message})

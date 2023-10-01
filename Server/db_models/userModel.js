@@ -11,18 +11,29 @@ const userSchema = new Schema({
         required: true,
     },
     address:{
-        type: String
+        country:{
+            type: String,
+            required: true,
+        },
+        city:{
+            type: String,
+            required: true,
+        },
+        postcode:{
+            type: String,
+            required: true,
+        }
     },
     contact:{
         type: String,
         required: true,
     },
-    /* wishList:{
-
+    wishlist:{
+        type: Array,
     },
     cart:{
-
-    }, */
+        type: Array,
+    },
 }, {timestamps: true})
 
 module.exports = mongoose.model('User',userSchema)

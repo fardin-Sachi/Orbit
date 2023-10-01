@@ -1,5 +1,7 @@
 node_modules/
+GoogleDrive/
 .env
+tmp.txt
 
 # dependencies
 /node_modules
