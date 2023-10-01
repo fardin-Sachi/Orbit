@@ -13,7 +13,7 @@
     grid-area: main;
     justify-content: center;
     align-items: center;
-    height: 80vh;
+    height: 100vh;
     text-align: center;
   }
   .login_container.right_section h1{

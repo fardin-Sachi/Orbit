@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./admin_update_book.css";
-import { useParams,Link } from "react-router-dom";
+import { useParams,Link ,useNavigate} from "react-router-dom";
 
 const Admin_update_book = () => {
   const { bookId } = useParams();
@@ -12,6 +12,8 @@ const Admin_update_book = () => {
     price: "",
     quantity: "",
   });
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     const fetchBookData = async () => {
@@ -44,6 +46,7 @@ const Admin_update_book = () => {
       });
       if (response.ok) {
         console.log("Book updated successfully");
+        navigate('/my_admin/admin_home/admin_db_total_book')
       } else {
         console.log("Error updating book");
       }
@@ -115,7 +118,7 @@ const Admin_update_book = () => {
             onChange={handleChange}
           />
 
-          <Link to='/my_admin/admin_home/admin_db_total_book'><input type="submit" value="Submit" /></Link>
+          <input type="submit" value="Submit" />
         </form>
       </div>
     </>

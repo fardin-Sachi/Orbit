@@ -1,34 +1,25 @@
-import React, { useState } from 'react'
+import React from 'react'
 import aginibina from '../image/nazrul.jpg'
-import booksDetail from './booksdetails'
+import booksdetail from './booksdetails'
 import './books.css'
 import { AiOutlineHeart } from 'react-icons/ai';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { BsEye } from 'react-icons/bs';
 // import { BsArrowRight } from 'react-icons/bs';
 import {AiOutlineClose} from 'react-icons/ai'
-import { getAuth} from '@firebase/auth';
 
 const Books = ({book,setBook,detail,view,close,setClose,addtocart,addtowish}) => {
-    // const [books,setBooks] = useState([])
-    // const auth = getAuth()
-    // const user = auth.currentUser;
-
-   
-
- const filterbook = (genre) => {
+    
+    const filterbook = (genre) => {
         if (genre === 'All Books') {
-            /* user!==null? */ setBooks(booksDetail)/*  : setBooks([]) */
+            setBook(booksdetail);
         } else {
-            const filteredBooks = booksDetail.filter((book) => book.genre === genre);
-            /* user!==null?  */setBooks(filteredBooks)/*  : setBooks([]) */
-            // setBooks(filteredBooks);
+            const filteredBooks = booksdetail.filter((book) => book.genre === genre);
+            setBook(filteredBooks);
         }
     };
     const AllBooks=()=>{
-        /* user!==null?  */setBooks(booksDetail)/*  : setBooks([]) */
-        // setBooks(booksDetail)
-        console.log(book)
+        setBook(booksdetail)
     }
     return (
         <>
@@ -49,7 +40,7 @@ const Books = ({book,setBook,detail,view,close,setClose,addtocart,addtowish}) =>
                                 <h4>{curElm.author}</h4>
                                 <h3>{curElm.genre}</h3>
                                 <h3>{curElm.price}/-</h3>
-                                <button>Add to Cart</button>
+                                <button onClick={()=>addtocart(curElm)} >Add to Cart</button>
                             </div>
                         </div>
                     )
@@ -61,7 +52,7 @@ const Books = ({book,setBook,detail,view,close,setClose,addtocart,addtowish}) =>
         }
             <div className='book'>
             <h3>Books</h3>
-            {/* <p>Home . books</p> */}
+            <p>Home . books</p>
                 <div className='container'>
                     <div className='filter'>
                         <div className='categories'>
@@ -119,14 +110,14 @@ const Books = ({book,setBook,detail,view,close,setClose,addtocart,addtowish}) =>
 
 export default Books
 /* 
-const [books, setBooks] = useState([])
+const [books, setBook] = useState([])
     const fetchBooks = async () => {
         try {
             setLoading(true)
             const response = await fetch("/api/books")
             if (response.ok) {
                 const json = await response.json()
-                setBooks(json)
+                setBook(json)
             }
             else setError("Error fetching data")
         } catch (err) {

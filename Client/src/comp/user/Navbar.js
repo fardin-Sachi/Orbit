@@ -64,7 +64,7 @@ const Navbar = ({ searchbtn }) => {
             </div>
             <div className='second_icon'>
               {user !== null ? <Link to='/user/cart' className='link'><BsBagCheck /></Link> : <p></p>}
-              {user !== null ? <Link to='/wish' className='link'><AiOutlineHeart /></Link> : <p></p>}
+              {user !== null ? <Link to='/user/wish' className='link'><AiOutlineHeart /></Link> : <p></p>}
             </div>
 
           </div>

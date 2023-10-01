@@ -7,6 +7,7 @@ import Login from './login.js'
 import Signup from './signup.js'
 import Cart from './cart.js'
 import Wish from './wish.js'
+import Profile from './profile.js'
 import { handleUserAuth } from './firebase.js'
 
 const Rout = ({ book, setBook, detail, view, close, setClose, cart, setCart, addtocart, wish, setWish, addtowish }) => {
@@ -26,10 +27,13 @@ const Rout = ({ book, setBook, detail, view, close, setClose, cart, setCart, add
         <Route path='/user/cart' element={<Cart cart={cart} setCart={setCart} />}></Route>
 
         <Route path='/user/wish' element={<Wish wish={wish} setWish={setWish} />}></Route>
+        <Route path='/user/profile' element={<Profile />}></Route>
+
 
         <Route path='/user/login' element={<Login />}></Route>
 
         <Route path='/user/signup' element={<Signup />}></Route>
+
       </Routes>
     </>
   )
