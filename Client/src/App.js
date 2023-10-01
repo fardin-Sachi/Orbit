@@ -61,12 +61,14 @@ const App = () => {
   };
 
   const addtowish = (book) => {
-    const exist = wish.find((x) => x.id === book.id);
+    const exist = cart.find((x) => {
+      x._id = book._id
+    })
     if (exist) {
-      alert('This Book is added to wish');
+      alert('This Book is already added to wish');
     } else {
       setWish([...wish, { ...book, qty: 1 }]);
-      alert('Book is already added to the wish');
+      alert('Book is added to the wish');
     }
   };
 

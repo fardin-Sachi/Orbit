@@ -4,12 +4,14 @@ import { Link } from 'react-router-dom'
 import './cart.css'
 
 const Cart = ({ cart, setCart }) => {
+  
+  
   // Increase the qty
   const incqty = (book) => {
-    console.log('Incrementing book with id:', book.id);
+    console.log('Incrementing book with id:', book._id);
     setCart((prevCart) => {
       return prevCart.map((curElm) =>
-        curElm.id === book.id ? { ...curElm, qty: curElm.qty + 1 } : curElm
+        curElm._id === book._id ? { ...curElm, qty: curElm.qty + 1 } : curElm
         
       );
     });
@@ -18,16 +20,27 @@ const Cart = ({ cart, setCart }) => {
   // Decrement the qty
   const decqty = (book) => {
     setCart((prevCart) => {
-      return prevCart.map((curElm) =>
-        curElm.id === book.id ? { ...curElm, qty: curElm.qty - 1 } : curElm
-      );
+      return prevCart.map((curElm) => {
+        if (curElm._id === book._id) {
+          if (curElm.qty > 1) {
+            return { ...curElm, qty: curElm.qty - 1 };
+          } else if(curElm) {
+            removebook(curElm); // Remove the book when qty is 0
+            return curElm;
+          }
+        } else {
+          return curElm;
+        }
+      });
     });
   };
   
+  
   // Remove book
   const removebook = (book) => {
-    if (book.qty > 0) {
-      setCart((prevCart) => prevCart.filter((x) => x.id !== book.id));
+   
+    if (book.qty >= 1) {
+      setCart((prevCart) => prevCart.filter((x) => x._id !== book._id));
     }
   };
 
@@ -49,12 +62,12 @@ const Cart = ({ cart, setCart }) => {
           {cart.map((curElm) => (
             <div className='cart_item' key={curElm.id}>
               <div className='img_box'>
-                <img src={curElm.Img} alt={curElm.Title} />
+                <img src={curElm.cover} />
               </div>
               <div className='detail'>
                 <div className='info'>
-                  <h4>{curElm.Title}</h4>
-                  <h3>{curElm.Poet}</h3>
+                  <h4>{curElm.title}</h4>
+                  <h3>{curElm.author}</h3>
                   <h4>{curElm.genre}</h4>
                   <h4>{curElm.price}tk</h4>
                   <div className='qty'>

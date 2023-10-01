@@ -19,7 +19,7 @@ const Books = ({book,setBook,detail,view,close,setClose,addtocart,addtowish}) =>
         }
     };
     const AllBooks=()=>{
-        setBook(booksdetail)
+        setBook(booksDetail)
     }
     return (
         <>
