@@ -13,9 +13,9 @@ adminBooksRouter.get('/:_id', async (req,res) => {
     res.status(200).json(books)
 })
 adminBooksRouter.post('/',async (req,res) => {
-    const {title,author,genre,price,quantity} = req.body
+    const {title,author,genre,price,quantity,cover} = req.body
     try{
-        const book = await bookModel.create({title,author,genre,price,quantity})
+        const book = await bookModel.create({title,author,genre,price,quantity,cover})
         res.status(200).json(book)
     } catch(err){
         res.status(400).json({error: err.message})

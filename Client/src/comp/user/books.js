@@ -1,6 +1,5 @@
-import React from 'react'
-import aginibina from '../image/nazrul.jpg'
-import booksdetail from './booksdetails'
+import React, { useState } from 'react'
+import booksDetail from './booksdetails'
 import './books.css'
 import { AiOutlineHeart } from 'react-icons/ai';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
@@ -12,10 +11,11 @@ const Books = ({book,setBook,detail,view,close,setClose,addtocart,addtowish}) =>
     
     const filterbook = (genre) => {
         if (genre === 'All Books') {
-            setBook(booksdetail);
+            /* user!==null? */ setBook(booksDetail)/*  : setBooks([]) */
         } else {
-            const filteredBooks = booksdetail.filter((book) => book.genre === genre);
-            setBook(filteredBooks);
+            const filteredBooks = booksDetail.filter((book) => book.genre === genre);
+            /* user!==null?  */setBook(filteredBooks)/*  : setBooks([]) */
+            // setBooks(filteredBooks);
         }
     };
     const AllBooks=()=>{
@@ -33,7 +33,7 @@ const Books = ({book,setBook,detail,view,close,setClose,addtocart,addtowish}) =>
                     return(
                         <div className='bookbox'>
                             <div className='img_box'>
-                                <img src={aginibina} alt={curElm.Title}></img>
+                                <img src={curElm.cover} alt={curElm.Title}></img>
                             </div>
                             <div className='detail'>
                                 <h1>{curElm.title}</h1>
@@ -79,7 +79,7 @@ const Books = ({book,setBook,detail,view,close,setClose,addtocart,addtowish}) =>
                                         <>
                                             <div className='box' key={curElm.id}>
                                                 <div className='img_box'>
-                                                    <img src={aginibina} alt={curElm.title} />
+                                                    <img src={curElm.cover} alt={curElm.title} />
                                                     <div className='icon'>
                                                         <li onClick={()=>addtocart(curElm)}><AiOutlineShoppingCart /></li>
                                                         <li onClick={()=>view(curElm)}> <BsEye /></li>
