@@ -15,21 +15,21 @@ import { getAuth, signOut } from '@firebase/auth';
 const Navbar = ({ searchbtn }) => {
   const [search, setSearch] = useState()
   const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(null)
+  // const [error, setError] = useState(null)
   let auth = getAuth()
   let user = auth.currentUser
   const navigate = useNavigate()
   const logout = async () => {
     try {
       setLoading(true);
-      setError(null);
+      // setError(null);
       await signOut(auth);
       console.log("Successfully signed out!")
       // navigate('/user')
     } catch (err) {
       // console.error(err+"4")
       // alert(err.message)
-      setError("Unable to logout, please try again!")
+      // setError("Unable to logout, please try again!")
     } finally {
       setLoading(false)
     }
@@ -47,25 +47,33 @@ const Navbar = ({ searchbtn }) => {
         <div className='container'>
           <div className='logo'>
             {/* have to add logo here */}
-            <img src={logo} alt=''></img>
+            <img src={logo} alt='Orbit' onClick={()=>{
+              auth.currentUser?navigate('/user'):navigate('/')
+            }}></img>
           </div>
           <div className='search_box'>
-            <input type='text' value={search} placeholder='search your book' autoComplete='off' onChange={(e) => setSearch(e.target.value)}></input>
-            <button onClick={() => searchbtn(search)}>Search</button>
+            <input type='text' value={search} placeholder='Search' autoComplete='off' onChange={(e) => setSearch(e.target.value)}></input>
+            <button onClick={() => {
+              searchbtn(search)
+              navigate('/user/books')
+              }}>Search{/* <Link to='/user/books'>Search</Link> */}</button>
           </div>
           <div className='icon'>
             <div className='account'>
               <div className='user_icon'>
-                {user !== null ? <Link to='/user/profile'><AiOutlineUser /></Link> : <p></p>}
+                {user !== null ? <Link to='/user/profile' className='userLink'><AiOutlineUser /></Link> : <p></p>}
               </div>
               {user !== null ? <p>Hello, {user.email}</p> : <p></p>}
               {/* user.providerData.forEach((profile) => {profile.email}   */}
               {/* <p>Hello,user</p> */}
             </div>
             <div className='second_icon'>
-              {user !== null ? <Link to='/user/cart' className='link'><BsBagCheck /></Link> : <p></p>}
-              {user !== null ? <Link to='/user/wish' className='link'><AiOutlineHeart /></Link> : <p></p>}
+              {user !== null ? <Link to='/user/cart' className='link1'><BsBagCheck/></Link> : <p></p>}
             </div>
+            <div className='third_icon'>
+            {user !== null ? <Link to='/user/wish' className='link2'><AiOutlineHeart/></Link> : <p></p>}
+            </div>
+
           </div>
         </div>
 

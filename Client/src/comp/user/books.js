@@ -9,7 +9,7 @@ import {AiOutlineClose} from 'react-icons/ai'
 import { auth } from './firebase';
 import { useNavigate } from 'react-router-dom';
 
-const Books = ({book,setBook,detail,view,close,setClose,addtocart,addtowish}) => {
+const Books = ({book,setBook,detail,view,close,setClose,addtocart,addtowish,authorBasedBooks}) => {
     const navigate = useNavigate()
 
     const filterbook = (genre) => {

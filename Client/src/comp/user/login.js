@@ -3,13 +3,13 @@ import { Link, useNavigate } from 'react-router-dom';
 import './login.css';
 import google_logo from '../image/search.png'
 import login_book from '../image/books-1281581_1280.jpg'
-import { auth } from "./firebase";
+// import { auth } from "./firebase";
 import {
   getAuth,
   GoogleAuthProvider,
   signInWithEmailAndPassword,
   signInWithPopup,
-  sendPasswordResetEmail,
+  // sendPasswordResetEmail,
 } from "firebase/auth";
 
 const Login = () => {
@@ -60,19 +60,18 @@ const Login = () => {
       setLoading(false)
     }
   };
-  const resetPassword = async (email) => {
-    try {
-      await sendPasswordResetEmail(auth, email);
-      setLoading(true)
-      alert("Password reset link sent!");
-    } catch (err) {
-      console.error(err);
-      alert(err.message);
-    } finally {
-      setLoading(false)
-    }
-  }
-
+  // const resetPassword = async (email) => {
+  //   try {
+  //     await sendPasswordResetEmail(auth, email);
+  //     setLoading(true)
+  //     alert("Password reset link sent!");
+  //   } catch (err) {
+  //     console.error(err);
+  //     alert(err.message);
+  //   } finally {
+  //     setLoading(false)
+  //   }
+  // }
   return (
     <div className="login_container">
       <div className='card_container'>
@@ -104,7 +103,7 @@ const Login = () => {
             {error && <p className="error-message">{error}</p>}
           </form>
           
-          <Link  className='link_btn' onClick={resetPassword}><p>forget passoword</p></Link>
+          {/* <Link  className='link_btn' onClick={resetPassword}><p>forget passoword</p></Link> */}
 
           <Link to='/user/signup' className='link_btn' >Don't have an account? Sign up.</Link>
 

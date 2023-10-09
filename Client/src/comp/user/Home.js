@@ -4,19 +4,21 @@ import { AiOutlineClose } from 'react-icons/ai'
 import { AiOutlineHeart } from 'react-icons/ai';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { BsArrowRight } from 'react-icons/bs';
-import harryImage from '../image/harry_philosoper_stone.jpg';
+// import harryImage from '../image/harry_philosoper_stone.jpg';
 import nazrul from '../image/poet_pic/IslamKaziNazrul.jpg'
 import jibanando from '../image/poet_pic/jibanando.jpeg'
 import rabindranath from '../image/poet_pic/rabindranath.jpg'
 import jashim from '../image/poet_pic/jashim_uddin.jpeg'
 import bankim_chandra from '../image/poet_pic/Bankim-Chandra-Chattopadhyay.jpg'
 import { BsEye } from 'react-icons/bs';
-import harvest from '../image/The_Last_Harvest_Paintings_of_Rabindranath_Tagore_(book).jpeg'
+// import harvest from '../image/The_Last_Harvest_Paintings_of_Rabindranath_Tagore_(book).jpeg'
 import './Home.css'
 import { auth } from './firebase';
+// import booksDetail from './booksdetails';
 
-const Home = ({ view, close, setClose, addtocart, addtowish }) => {
+const Home = ({ view, close, setClose, addtocart, addtowish,authorBasedBooks }) => {
   const [detail, setDetail] = useState([])
+  // const [book,setBook] = useState([])
   const navigate = useNavigate()
   const fetchSomeBooksforHomepage = async () => {
     try {
@@ -39,6 +41,22 @@ const Home = ({ view, close, setClose, addtocart, addtowish }) => {
     }
     else return true
   }
+  // const authorBasedBooks = (author) => {
+  //   // const filteredBooks = booksDetail.filter((book) => book.author === author);
+  //   // setBooks(filteredBooks)
+
+  //   const lowercaseBook = author.toLowerCase(); // Convert the input to lowercase
+  //   const change = booksDetail.filter((x) => {
+  //     const lowercaseGenre = x.author.toLowerCase(); // Convert genre to lowercase
+  //     const lowercaseTitle = x.title.toLowerCase(); 
+  //     return lowercaseGenre === lowercaseBook || lowercaseBook==lowercaseTitle;
+  //   });
+  //   setBook(change);
+    
+  //   console.log(change)
+
+  
+  // }
   useEffect(() => {
     fetchSomeBooksforHomepage();
   }, []);
@@ -51,7 +69,7 @@ const Home = ({ view, close, setClose, addtocart, addtowish }) => {
             {
               detail.map((curElm) => {
                 return (
-                  <di className='bookbox'>
+                  <div className='bookbox'>
                     <div className='img_box'>
                       <img src={curElm.cover} alt={curElm.title}></img>
                     </div>
@@ -61,7 +79,7 @@ const Home = ({ view, close, setClose, addtocart, addtowish }) => {
                       <h3>{curElm.price}</h3>
                       <button onClick={() => auth.currentUser ? addtocart(curElm) : navigate('/user/login')}>Add to Cart</button>
                     </div>
-                  </di>
+                  </div>
                 )
               })
             }
@@ -89,8 +107,11 @@ const Home = ({ view, close, setClose, addtocart, addtowish }) => {
       <div className='books_type'>
         <div className='container'>
           <div className='box'>
-            <div className='img_box'>
-              <img src={nazrul} alt='nazrul' ></img>
+            <div className='img_box' >
+              <img src={nazrul} alt='nazrul' onClick={() => {
+                  authorBasedBooks('Kazi Nazrul Islam')
+                  navigate('/user/books')
+                }}></img>
             </div>
             <div className='detail'>
               <p>Kazi Nazrul Islam</p>
@@ -99,16 +120,22 @@ const Home = ({ view, close, setClose, addtocart, addtowish }) => {
 
           <div className='box'>
             <div className='img_box'>
-              <img src={rabindranath} alt='rabindranath' ></img>
+              <img src={rabindranath} alt='rabindranath'  onClick={() => {
+                  authorBasedBooks('Rabindranath Tagore')
+                  navigate('/user/books')
+                }}></img>
             </div>
             <div className='detail'>
-              <p>Rabindranath Thakur</p>
+              <p>Rabindranath Tagore</p>
             </div>
           </div>
 
           <div className='box'>
             <div className='img_box'>
-              <img src={jashim} alt='jashim uddin' ></img>
+              <img src={jashim} alt='jashim uddin'  onClick={() => {
+                  authorBasedBooks('Jasim Uddin')
+                  navigate('/user/books')
+                }}></img>
             </div>
             <div className='detail'>
               <p>Jashim Uddin</p>
@@ -117,16 +144,22 @@ const Home = ({ view, close, setClose, addtocart, addtowish }) => {
 
           <div className='box'>
             <div className='img_box'>
-              <img src={bankim_chandra} alt='Bankim Chandra'></img>
+              <img src={bankim_chandra} alt='Bankim Chandra' onClick={() => {
+                  authorBasedBooks('Bankim Chandra Chattopadhyay')
+                  navigate('/user/books')
+                }}></img>
             </div>
             <div className='detail'>
-              <p>Bankim Chandra Chatterjee</p>
+              <p>Bankim Chandra Chattopadhyay</p>
             </div>
           </div>
 
           <div className='box'>
             <div className='img_box'>
-              <img src={jibanando} alt='jibanando' ></img>
+              <img src={jibanando} alt='jibanando'  onClick={() => {
+                  authorBasedBooks('Jibanananda Das')
+                  navigate('/user/books')
+                }}></img>
             </div>
             <div className='detail'>
               <p>Jibanananda Das</p>

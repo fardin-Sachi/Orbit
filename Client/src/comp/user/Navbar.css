@@ -34,14 +34,20 @@
 }
 
 .main_header .container .search_box{
- margin-right: 30px; 
+ margin-right: 30px;
 }
 
 .main_header .container .logo img{
   height: auto;
   width: 100px;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  transition: 0.5s;
 }
-
+.main_header .container .logo:hover img{
+  transform: scale(1.3);
+}
 .main_header .container .search_box input{
   outline: none;
   padding: 10px 30px;
@@ -57,6 +63,10 @@
     padding: 10px 20px;
     background:#0989ff ;
     color:#ecf2f7;
+    font-size:large;
+}
+.main_header .container .search_box:hover button{
+  transform: scale(1.05);
 }
 
 .main_header .container .icon{
@@ -76,30 +86,56 @@
   cursor: pointer;
 }
 
+
 .main_header .container .icon .account p{
  margin-right:5px ;
- margin-top: 6px;
+ margin-top: 3px;
 }
+.main_header .container .icon .account .user_icon{
+  display: flex;
+}
+.main_header .container .icon .account .user_icon .userLink{
+  margin-right: 10px;
+  font-size: 22px;
+  cursor: pointer;
+  color:#f3b123
+}
+.main_header .container .icon .account .user_icon:hover .userLink{
+  transform: scale(1.3);
+}
+
 
 .main_header .container .icon .second_icon {
   display: flex;
 }
-
-.main_header .container .icon .second_icon .link{
-  margin-right: 5px;
+.main_header .container .icon .second_icon .link1{
+  margin-right: 10px;
   font-size: 22px;
   cursor: pointer;
   color:#f3b123
+}
+.main_header .container .icon .second_icon:hover .link1{
+  transform: scale(1.3);
+}
+
+.main_header .container .icon .third_icon {
+  display: flex;
+}
+.main_header .container .icon .third_icon .link2{
+  margin-left: 0px;
+  font-size: 22px;
+  cursor: pointer;
+  color:#f3b123
+}
+.main_header .container .icon .third_icon:hover .link2{
+  transform: scale(1.3);
 }
 
 .header{
   width: 100%;
   padding: 20px 30px;
   box-shadow: rgba(0, 0, 0, .35)0px 5px 15px;
- 
-  
 }
-
 
 .header .container{
   display: flex;
