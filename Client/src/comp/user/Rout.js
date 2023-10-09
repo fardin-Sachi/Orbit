@@ -8,21 +8,19 @@ import Signup from './signup.js'
 import Cart from './cart.js'
 import Wish from './wish.js'
 import Profile from './profile.js'
-import { handleUserAuth } from './firebase.js'
+// import { handleUserAuth } from './firebase.js'
 
-const Rout = ({ book, setBook, detail, view, close, setClose, cart, setCart, addtocart, wish, setWish, addtowish }) => {
-  const navigate = useNavigate()
+const Rout = ({ book, setBook, detail, view, close, setClose, cart, setCart, addtocart, wish, setWish, addtowish}) => {
+
 
   return (
     <>
       <Routes>
-        <Route path='/' element={<Home detail={detail} view={view} close={close} setClose={setClose} addtocart={addtocart} addtowish={addtowish} />}></Route>
+        <Route path='/' element={<Home detail={detail} view={view} close={close} setClose={setClose} addtocart={addtocart} addtowish={addtowish}  />}></Route>
 
-        <Route path='/user' element={<Home detail={detail} view={view} close={close} setClose={setClose} addtocart={addtocart} addtowish={addtowish} />}>
-          
-        </Route>
+        <Route path='/user' element={<Home detail={detail} view={view} close={close} setClose={setClose} addtocart={addtocart} addtowish={addtowish}/>}>  </Route>
 ''
-        <Route path='/user/books' element={<Books book={book} setBook={setBook} detail={detail} view={view} close={close} setClose={setClose} addtocart={addtocart} addtowish={addtowish} />}></Route>
+        <Route path='/user/books' element={<Books book={book} setBook={setBook} detail={detail} view={view} close={close} setClose={setClose} addtocart={addtocart} addtowish={addtowish}/>}></Route>
 
         <Route path='/user/cart' element={<Cart cart={cart} setCart={setCart} />}></Route>
 

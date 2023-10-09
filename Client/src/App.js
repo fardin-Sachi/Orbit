@@ -11,6 +11,8 @@ import User_Home from './comp/user/Home';
 import Admin_Home from './comp/my_admin/home'; // Import the Admin Home component
 import './App.css';
 import Home from './comp/user/Home';
+import { useNavigate } from 'react-router-dom';
+
 
 
 const App = () => {
@@ -21,7 +23,7 @@ const App = () => {
   const toggleAdminView = () => {
     setIsAdmin((prevState) => !prevState);
   };
-  
+
   const [loading,setLoading] = useState(false)
   const [cart, setCart] = useState([]);
   const [wish, setWish] = useState([]);
@@ -31,11 +33,27 @@ const App = () => {
   const [book, setBook] = useState(booksdetail);
 
   const searchbtn = (book) => {
+    const lowercaseBook = book.toLowerCase(); // Convert the input to lowercase
     const change = booksdetail.filter((x) => {
-      return x.genre === book;
+      const lowercaseGenre = x.genre.toLowerCase(); // Convert genre to lowercase
+      const lowercaseTitle = x.title.toLowerCase(); 
+      return lowercaseGenre === lowercaseBook || lowercaseBook==lowercaseTitle;
     });
     setBook(change);
   };
+
+  // const filter_book_author = (author) => {
+  //   const lowercaseAuthor = author.toLowerCase(); // Convert the input to lowercase
+  //   const change = booksdetail.filter((x) => {
+  //     const lowercaseBookAuthor = x.author.toLowerCase(); // Convert author to lowercase
+  //     return lowercaseBookAuthor===lowercaseAuthor;
+  //   });
+  //   setBook(change);
+  // };
+  
+
+
+//filter the book on the basis of author 
 
   // const changeTitle = (event) => {
   //   setTitle(event.target.value);

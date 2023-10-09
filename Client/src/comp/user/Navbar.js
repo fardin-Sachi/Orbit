@@ -51,7 +51,7 @@ const Navbar = ({ searchbtn }) => {
           </div>
           <div className='search_box'>
             <input type='text' value={search} placeholder='search your book' autoComplete='off' onChange={(e) => setSearch(e.target.value)}></input>
-            <button onClick={() => searchbtn(search)}>Search</button>
+            <button onClick={() => searchbtn(search)}><Link to='/user/books'>Search</Link></button>
           </div>
           <div className='icon'>
             <div className='account'>

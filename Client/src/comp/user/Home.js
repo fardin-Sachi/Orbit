@@ -16,7 +16,7 @@ import harvest from '../image/The_Last_Harvest_Paintings_of_Rabindranath_Tagore_
 import './Home.css'
 import { auth } from './firebase';
 
-const Home = ({detail,view,close,setClose,addtocart,addtowish}) => {
+const Home = ({detail,view,close,setClose,addtocart,addtowish,filter_book_author}) => {
   const navigate = useNavigate()
   const someBooksForHomepage = []
   const fetchSomeBooksforHomepage = async () => {
@@ -50,7 +50,7 @@ const Home = ({detail,view,close,setClose,addtocart,addtowish}) => {
                   return(
                       <di className='bookbox'>
                           <div className='img_box'>
-                              <img src={curElm.Img} alt={curElm.Title}></img>
+                              <img src={curElm.Img} alt={curElm.Title} ></img>
                           </div>
                           <div className='detail'>
                               <h2>{curElm.Title}</h2>
