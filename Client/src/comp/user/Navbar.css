@@ -109,6 +109,7 @@
 
 .header .container .nav ul{
   display: flex;
+  margin-right: 1200px;
 }
 .header .container .nav ul li{
   margin-left: 20px;

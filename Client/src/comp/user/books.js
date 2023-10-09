@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import booksDetail from './booksdetails'
 import './books.css'
 import { AiOutlineHeart } from 'react-icons/ai';
@@ -6,20 +6,23 @@ import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { BsEye } from 'react-icons/bs';
 // import { BsArrowRight } from 'react-icons/bs';
 import {AiOutlineClose} from 'react-icons/ai'
+import { auth } from './firebase';
+import { useNavigate } from 'react-router-dom';
 
 const Books = ({book,setBook,detail,view,close,setClose,addtocart,addtowish}) => {
-    
+    const navigate = useNavigate()
+
     const filterbook = (genre) => {
         if (genre === 'All Books') {
-            /* user!==null? */ setBook(booksDetail)/*  : setBooks([]) */
+            auth.currentUser? setBook(booksDetail) : navigate('/user/login')
         } else {
             const filteredBooks = booksDetail.filter((book) => book.genre === genre);
-            /* user!==null?  */setBook(filteredBooks)/*  : setBooks([]) */
+            auth.currentUser? setBook(filteredBooks) : navigate('/user/login')
             // setBooks(filteredBooks);
         }
     };
     const AllBooks=()=>{
-        setBook(booksDetail)
+        auth.currentUser? setBook(booksDetail) : navigate('/user/login')
     }
     return (
         <>
@@ -33,7 +36,7 @@ const Books = ({book,setBook,detail,view,close,setClose,addtocart,addtowish}) =>
                     return(
                         <div className='bookbox'>
                             <div className='img_box'>
-                                <img src={curElm.cover} alt={curElm.Title}></img>
+                                <img src={curElm.cover} alt={curElm.title}></img>
                             </div>
                             <div className='detail'>
                                 <h1>{curElm.title}</h1>

@@ -4,8 +4,9 @@ const express = require("express");
 const booksRoute = require('./routes/user/booksRoute')
 const app = express()
 const adminBooksRouter = require('./routes/admin/adminBooksRoute');
-const userRouter = require('./routes/admin/userRoutes');
+const adminUserRouter = require('./routes/admin/adminUserRoutes');
 const adminRouter = require('./routes/admin/adminRoutes');
+const userRouter = require('./routes/user/userRoutes');
 
 app.use(express.json())
 app.use((req,res,next) => {
@@ -13,10 +14,11 @@ app.use((req,res,next) => {
     next()
 })
 app.use('/api/books',booksRoute)
+app.use('/api/user',userRouter)
 
 //Admin accessess
 app.use('/api/admin/books',adminBooksRouter)
-app.use('/api/admin/users',userRouter)
+app.use('/api/admin/users',adminUserRouter)
 app.use('/api/admin/admins',adminRouter)
 
 mongoose.connect(process.env.MONGODB_URL)

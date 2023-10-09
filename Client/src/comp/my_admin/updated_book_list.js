@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 const Updated_book_list = () => {
   return (
     <>
-
       <div className="table-wrapper">
         <h1>THIS BOOK ARE UPDATED</h1>
 

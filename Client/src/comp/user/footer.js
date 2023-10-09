@@ -6,11 +6,12 @@ import {RiTwitterFill} from 'react-icons/ri'
 import logo from '../image/orbit logo.png'
 import './footer.css'
 import { Link } from 'react-router-dom'
-
+import { useNavigate } from 'react-router-dom'
+import { auth } from './firebase'
 
 
 const Footer = ({ toggleAdminView,isAdmin }) => {
-
+    const navigate = useNavigate()
   return (
     <>
        <div className='footer'>
@@ -21,30 +22,30 @@ const Footer = ({ toggleAdminView,isAdmin }) => {
                     <img src={logo} alt='logo'></img>
                 </div>
                 <div className='detail'>
-                    <p>we are here to spread knowledge and happiness</p>
-                    <div className='icon'>
+                    <p>To learn to read is to light a fire; every syllable that is spelled out is a spark</p>
+                    {/* <div className='icon'>
                         <li><RiFacebookFill/></li>
                         <li><RiInstagramFill/></li>
                         <li><RiYoutubeFill/></li>
                         <li><RiTwitterFill/></li>
-                    </div>
+                    </div> */}
                 </div>
 
             </div>
             <div className='account'>
                 <h3>My Account</h3>
                 <ul>
-                    <li>Account</li>
+                    <li onClick={()=>auth.currentUser?navigate('/user/profile'):null}>Account</li>
                     <li>Order</li>
-                    <li>Cart</li>
-                    <li>Shipping</li>
-                    <li>Return</li>
+                    <li onClick={()=>auth.currentUser?navigate('/user/cart'):null}>Cart</li>
+                    {/* <li>Shipping</li>
+                    <li>Return</li> */}
                 </ul>
             </div>
             <div className='page'>
                 <h3>Pages</h3>
                 <ul>
-                    <li>Home</li>
+                    <li onClick={()=>navigate('/')}>Home</li>
                     <li>About</li>
                     <li>Contact</li>
                     <li>Terms and Condition</li>

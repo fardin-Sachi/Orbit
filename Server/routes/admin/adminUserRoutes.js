@@ -1,13 +1,13 @@
 const express = require("express")
-const userRouter = express.Router()
+const adminUserRouter = express.Router()
 const userModel = require('../../db_models/userModel')
 const mongoose = require("mongoose")
 
-userRouter.get('/', async (req,res) => {
+adminUserRouter.get('/', async (req,res) => {
     const users = await userModel.find({})
     res.status(200).json(users)
 })
-userRouter.get('/:_id',async (req,res) => {
+adminUserRouter.get('/:_id',async (req,res) => {
     const {_id} = req.params
     if(!mongoose.Types.ObjectId.isValid(_id)){
         return res.status(404).json({error:"No such user is found."})
@@ -18,7 +18,7 @@ userRouter.get('/:_id',async (req,res) => {
     res.status(200).json(users)
 })
 
-userRouter.post('/',async (req,res) => {
+adminUserRouter.post('/',async (req,res) => {
     const {email,name,address,contact,wishlist,cart} = req.body //,wishlist,cart
     try{
         const users = await userModel.create({email,name,address,contact,wishlist,cart})
@@ -28,7 +28,7 @@ userRouter.post('/',async (req,res) => {
     }
 })
 
-userRouter.delete('/:_id', async (req,res) => {
+adminUserRouter.delete('/:_id', async (req,res) => {
     const {_id} = req.params
     if(!mongoose.Types.ObjectId.isValid(_id)){
         return res.status(404).json({error:"No such user is found."})
@@ -40,7 +40,7 @@ userRouter.delete('/:_id', async (req,res) => {
     res.status(200).json(user)
 })
 
-userRouter.patch('/:_id',async (req,res) => {
+adminUserRouter.patch('/:_id',async (req,res) => {
     let updateValue = req.body
     const {_id} = req.params
     if(!mongoose.Types.ObjectId.isValid(_id)){
@@ -52,4 +52,4 @@ userRouter.patch('/:_id',async (req,res) => {
     res.status(200).json(user)
 })
 
-module.exports = userRouter
+module.exports = adminUserRouter

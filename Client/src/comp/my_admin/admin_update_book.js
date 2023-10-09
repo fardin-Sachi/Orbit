@@ -5,7 +5,6 @@ import { useParams,Link ,useNavigate} from "react-router-dom";
 const Admin_update_book = () => {
   const { bookId } = useParams();
   const [bookdata, setBookdata] = useState({
-    _id: "",
     title: "",
     author: "",
     genre: "",

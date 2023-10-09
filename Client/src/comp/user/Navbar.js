@@ -66,7 +66,6 @@ const Navbar = ({ searchbtn }) => {
               {user !== null ? <Link to='/user/cart' className='link'><BsBagCheck /></Link> : <p></p>}
               {user !== null ? <Link to='/user/wish' className='link'><AiOutlineHeart /></Link> : <p></p>}
             </div>
-
           </div>
         </div>
 

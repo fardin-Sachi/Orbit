@@ -13,20 +13,20 @@ const userSchema = new Schema({
     address:{
         country:{
             type: String,
-            required: true,
+            // required: true,
         },
         city:{
             type: String,
-            required: true,
+            // required: true,
         },
         postcode:{
             type: String,
-            required: true,
+            // required: true,
         }
     },
     contact:{
         type: String,
-        required: true,
+        // required: true,
     },
     wishlist:{
         type: Array,

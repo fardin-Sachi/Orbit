@@ -62,7 +62,7 @@ const Add_book_db = () => {
             type="text"
             id="title"
             name="title"
-            placeholder="Book name..."
+            placeholder="Book name"
             value={bookdata.title}
             onChange={handleChange}
           />
