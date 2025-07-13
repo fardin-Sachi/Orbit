@@ -12,6 +12,8 @@ Orbit is a full-stack online bookstore web application that allows users to brow
   *(Replace with actual deployed link if available)*
 
 --- -->
+## Project Preview
+![Model](Project_walkthrow.png)
 
 ## 🧰 Tech Stack
 
